@@ -9,6 +9,7 @@ import {MessageService} from './message/shared/message.service';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { MessageComponentComponent } from './message/message-component/message-component.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { MessageComponentComponent } from './message/message-component/message-c
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    MomentModule
+    MomentModule, AppRoutingModule
   ],
   providers: [
     MessageService
