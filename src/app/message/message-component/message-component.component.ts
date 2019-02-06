@@ -29,7 +29,7 @@ export class MessageComponentComponent implements OnInit {
 
   send() {
     const time = new Date();
-    this.messageService.addMessage(time, this.message.trim() ).then(done => {
+    this.messageService.addMessage(time, this.message.trim()).then(done => {
       console.log('saved');
     }, err => {
       console.log(err);

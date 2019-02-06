@@ -13,7 +13,7 @@ export class MessageService {
   }
 
   getMessagesLastByLimit(limit: number): Observable<any> {
-    return this.db.collection('messages', ref => ref.orderBy('time', 'desc').limit(limit)).valueChanges();
+    return this.db.collection('messages', ref => ref.orderBy('message', 'asc').limit(limit)).valueChanges();
   }
 
   getMessagesPaged(limit: number, startAt?: any): Observable<any> {
@@ -23,7 +23,7 @@ export class MessageService {
   addMessage(time: Date, message: any): Promise<any> {
     if (time && this.messageOk(message)) {
       const messageCollection = this.db.collection<any>('messages');
-      return messageCollection.add({time: time, message: message});
+      return messageCollection.add({time: time, message: this.convertToText(message)});
     } else {
       return new Promise((resolve, reject) => {
         reject('Value is not a valid morse code');
